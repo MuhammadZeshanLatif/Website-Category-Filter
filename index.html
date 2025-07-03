@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Website Category Filter Tool</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-cog"></i>
+                    <span>WorkGine</span>
+                </div>
+                <h1 class="page-title">
+                    <i class="fas fa-filter"></i>
+                    Advanced Website Category Filter Tool
+                </h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- File Upload Section -->
+    <section class="upload-section">
+        <div class="container">
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-content">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Upload your CSV or Excel file</h3>
+                    <p>Drag and drop your file here or click to browse</p>
+                    <input type="file" id="fileInput" accept=".csv,.xlsx,.xls" hidden>
+                    <button class="upload-btn" onclick="document.getElementById('fileInput').click()">
+                        Choose File
+                    </button>
+                </div>
+                <div class="upload-progress" id="uploadProgress" style="display: none;">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <span class="progress-text" id="progressText">0%</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="content-grid">
+                <!-- Filters Sidebar -->
+                <aside class="filters-sidebar">
+                    <div class="filters-header">
+                        <h2><i class="fas fa-sliders-h"></i> Category Filters</h2>
+                        <button class="clear-filters-btn" id="clearFilters">
+                            <i class="fas fa-times"></i> Clear All
+                        </button>
+                    </div>
+
+                    <!-- WorkGine Focus -->
+                    <div class="filter-section">
+                        <h3>WorkGine Focus</h3>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="softwareSaas" class="toggle-input">
+                            <label for="softwareSaas" class="toggle-label">
+                                <span class="toggle-text">Software & SaaS</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Key Business Areas -->
+                    <div class="filter-section">
+                        <h3>Key Business Areas</h3>
+                        <div class="checkbox-grid">
+                            <label class="checkbox-item">
+                                <input type="checkbox" value="digital-marketing" class="business-area">
+                                <span class="checkmark"></span>
+                                Digital Marketing & SEO
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" value="business-finance" class="business-area">
+                                <span class="checkmark"></span>
+                                Business & Finance
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" value="real-estate" class="business-area">
+                                <span class="checkmark"></span>
+                                Real Estate
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" value="automotive" class="business-area">
+                                <span class="checkmark"></span>
+                                Automotive
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" value="home-improvement" class="business-area">
+                                <span class="checkmark"></span>
+                                Home Improvement & Gardening
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Website Purpose -->
+                    <div class="filter-section">
+                        <h3>Filter by Website Purpose/Structure</h3>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" value="blog-guest-posting" class="website-purpose">
+                                <span class="checkmark"></span>
+                                Blog/Guest Posting
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" value="service-based" class="website-purpose">
+                                <span class="checkmark"></span>
+                                Service Based
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" value="ecommerce-site" class="website-purpose">
+                                <span class="checkmark"></span>
+                                E-commerce
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- General Categories -->
+                    <div class="filter-section">
+                        <h3>General Categories</h3>
+                        <div class="checkbox-grid-4">
+                            <label class="checkbox-item">
+                                <input type="checkbox" value="business" class="general-category">
+                                <span class="checkmark"></span>
+                                Business
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" value="tech" class="general-category">
+                                <span class="checkmark"></span>
+                                Tech
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" value="fashion" class="general-category">
+                                <span class="checkmark"></span>
+                                Fashion
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" value="sports" class="general-category">
+                                <span class="checkmark"></span>
+                                Sports
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" value="travel" class="general-category">
+                                <span class="checkmark"></span>
+                                Travel
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" value="crypto" class="general-category">
+                                <span class="checkmark"></span>
+                                Crypto
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" value="finance" class="general-category">
+                                <span class="checkmark"></span>
+                                Finance
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" value="education" class="general-category">
+                                <span class="checkmark"></span>
+                                Education
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" value="health" class="general-category">
+                                <span class="checkmark"></span>
+                                Health
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" value="law" class="general-category">
+                                <span class="checkmark"></span>
+                                Law
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" value="lifestyle" class="general-category">
+                                <span class="checkmark"></span>
+                                Lifestyle
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" value="wedding" class="general-category">
+                                <span class="checkmark"></span>
+                                Wedding
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" value="pets" class="general-category">
+                                <span class="checkmark"></span>
+                                Pets
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" value="photography" class="general-category">
+                                <span class="checkmark"></span>
+                                Photography
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" value="entertainment" class="general-category">
+                                <span class="checkmark"></span>
+                                Entertainment
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" value="food" class="general-category">
+                                <span class="checkmark"></span>
+                                Food
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Geographic & Domain Filters -->
+                    <div class="filter-section">
+                        <h3><i class="fas fa-globe"></i> Geographic & Domain Filters</h3>
+                        
+                        <!-- Country Filter -->
+                        <div class="sub-filter">
+                            <h4>Country Filter</h4>
+                            <div class="country-grid-comprehensive">
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="argentina" class="country-filter">
+                                    <span class="checkmark"></span>
+                                    Argentina
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="australia" class="country-filter">
+                                    <span class="checkmark"></span>
+                                    Australia
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="austria" class="country-filter">
+                                    <span class="checkmark"></span>
+                                    Austria
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="belgium" class="country-filter">
+                                    <span class="checkmark"></span>
+                                    Belgium
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="brazil" class="country-filter">
+                                    <span class="checkmark"></span>
+                                    Brazil
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="canada" class="country-filter">
+                                    <span class="checkmark"></span>
+                                    Canada
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="china" class="country-filter">
+                                    <span class="checkmark"></span>
+                                    China
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="denmark" class="country-filter">
+                                    <span class="checkmark"></span>
+                                    Denmark
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="dubai" class="country-filter">
+                                    <span class="checkmark"></span>
+                                    Dubai (UAE)
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="france" class="country-filter">
+                                    <span class="checkmark"></span>
+                                    France
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="germany" class="country-filter">
+                                    <span class="checkmark"></span>
+                                    Germany
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="india" class="country-filter">
+                                    <span class="checkmark"></span>
+                                    India
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="ireland" class="country-filter">
+                                    <span class="checkmark"></span>
+                                    Ireland
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="italy" class="country-filter">
+                                    <span class="checkmark"></span>
+                                    Italy
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="japan" class="country-filter">
+                                    <span class="checkmark"></span>
+                                    Japan
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="mexico" class="country-filter">
+                                    <span class="checkmark"></span>
+                                    Mexico
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="netherlands" class="country-filter">
+                                    <span class="checkmark"></span>
+                                    Netherlands
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="new-zealand" class="country-filter">
+                                    <span class="checkmark"></span>
+                                    New Zealand
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="norway" class="country-filter">
+                                    <span class="checkmark"></span>
+                                    Norway
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="pakistan" class="country-filter">
+                                    <span class="checkmark"></span>
+                                    Pakistan
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="philippines" class="country-filter">
+                                    <span class="checkmark"></span>
+                                    Philippines
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="russia" class="country-filter">
+                                    <span class="checkmark"></span>
+                                    Russia
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="singapore" class="country-filter">
+                                    <span class="checkmark"></span>
+                                    Singapore
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="south-africa" class="country-filter">
+                                    <span class="checkmark"></span>
+                                    South Africa
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="sweden" class="country-filter">
+                                    <span class="checkmark"></span>
+                                    Sweden
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="switzerland" class="country-filter">
+                                    <span class="checkmark"></span>
+                                    Switzerland
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="uk" class="country-filter">
+                                    <span class="checkmark"></span>
+                                    UK
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="usa" class="country-filter">
+                                    <span class="checkmark"></span>
+                                    USA
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="other" class="country-filter">
+                                    <span class="checkmark"></span>
+                                    Other
+                                </label>
+                            </div>
+                            <div class="filter-actions-inline">
+                                <button class="btn-link" id="selectAllCountries">Select All</button>
+                                <button class="btn-link" id="unselectAllCountries">Unselect All</button>
+                            </div>
+                        </div>
+
+                        <!-- ccTLD Filter -->
+                        <div class="sub-filter">
+                            <h4>ccTLD Filter (Domain Extensions)</h4>
+                            <div class="tld-grid-comprehensive">
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="ae" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .ae
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="ai" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .ai
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="app" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .app
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="at" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .at
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="au" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .au
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="be" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .be
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="br" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .br
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="ca" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .ca
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="ch" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .ch
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="co" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .co
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="co.jp" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .co.jp
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="co.nz" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .co.nz
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="co.uk" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .co.uk
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="co.za" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .co.za
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="com" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .com
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="com.ar" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .com.ar
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="com.au" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .com.au
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="com.br" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .com.br
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="com.cn" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .com.cn
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="com.mx" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .com.mx
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="com.pk" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .com.pk
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="de" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .de
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="dev" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .dev
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="dk" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .dk
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="es" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .es
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="fr" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .fr
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="ie" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .ie
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="in" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .in
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="io" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .io
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="it" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .it
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="jp" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .jp
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="me" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .me
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="net" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .net
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="nl" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .nl
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="no" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .no
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="nz" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .nz
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="online" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .online
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="org" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .org
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="ph" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .ph
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="pk" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .pk
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="ru" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .ru
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="se" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .se
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="sg" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .sg
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="tech" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .tech
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="uk" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .uk
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="us" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .us
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="xyz" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    .xyz
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" value="other-tlds" class="tld-filter">
+                                    <span class="checkmark"></span>
+                                    Other TLDs
+                                </label>
+                            </div>
+                            <div class="filter-actions-inline">
+                                <button class="btn-link" id="selectAllTlds">Select All</button>
+                                <button class="btn-link" id="unselectAllTlds">Unselect All</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Traffic Filters -->
+                    <div class="filter-section">
+                        <h3><i class="fas fa-chart-line"></i> Traffic Filters</h3>
+                        <div class="traffic-filter">
+                            <div class="input-group">
+                                <label for="minTraffic">Minimum Traffic Threshold</label>
+                                <input type="number" id="minTraffic" placeholder="0" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label for="maxTraffic">Maximum Traffic Threshold</label>
+                                <input type="number" id="maxTraffic" placeholder="No limit" min="0">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Filter Actions -->
+                    <div class="filter-actions">
+                        <button class="btn btn-primary" id="applyFilters">
+                            <i class="fas fa-search"></i> Process and Filter Websites
+                        </button>
+                        <button class="btn btn-secondary" id="savePreset">
+                            <i class="fas fa-save"></i> Save Preset
+                        </button>
+                    </div>
+                </aside>
+
+                <!-- Results Section -->
+                <section class="results-section">
+                    <!-- Active Filter Tags -->
+                    <div class="active-filters-section" id="activeFiltersSection" style="display: none;">
+                        <h3><i class="fas fa-tags"></i> Active Filters</h3>
+                        <div class="active-filters-container" id="activeFiltersContainer">
+                            <!-- Active filter tags will be dynamically added here -->
+                        </div>
+                    </div>
+
+                    <!-- Category Summary -->
+                    <div class="category-summary-enhanced" id="categorySummaryEnhanced" style="display: none;">
+                        <h3>Category Summary</h3>
+                        <div class="summary-tags-enhanced" id="summaryTagsEnhanced">
+                            <!-- Category summary tags will be dynamically added here -->
+                        </div>
+                    </div>
+
+                    <div class="results-header">
+                        <h2><i class="fas fa-list"></i> Results <span id="resultsCount">(0)</span></h2>
+                        <div class="results-actions">
+                            <button class="btn btn-outline" id="exportResults">
+                                <i class="fas fa-download"></i> Download Results
+                            </button>
+                            <div class="search-box">
+                                <input type="text" id="searchResults" placeholder="Search within results...">
+                                <i class="fas fa-search"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Category Summary -->
+                    <div class="category-summary" id="categorySummary" style="display: none;">
+                        <h3>Category Summary</h3>
+                        <div class="summary-tags" id="summaryTags"></div>
+                    </div>
+
+                    <!-- Results Table -->
+                    <div class="results-table-container">
+                        <table class="results-table" id="resultsTable">
+                            <thead>
+                                <tr>
+                                    <th class="sortable" data-column="domain">
+                                        Domain <i class="fas fa-sort"></i>
+                                    </th>
+                                    <th class="sortable" data-column="traffic">
+                                        Traffic <i class="fas fa-sort"></i>
+                                    </th>
+                                    <th class="sortable" data-column="relevance">
+                                        Relevance <i class="fas fa-sort"></i>
+                                    </th>
+                                    <th class="sortable" data-column="keywords">
+                                        Keywords <i class="fas fa-sort"></i>
+                                    </th>
+                                    <th>Categories</th>
+                                    <th>ccTLD</th>
+                                </tr>
+                            </thead>
+                            <tbody id="resultsTableBody">
+                                <tr class="no-data">
+                                    <td colspan="6">
+                                        <div class="no-data-message">
+                                            <i class="fas fa-upload"></i>
+                                            <p>Upload a CSV or Excel file to get started</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="pagination" id="pagination" style="display: none;">
+                        <button class="page-btn" id="prevPage">
+                            <i class="fas fa-chevron-left"></i> Previous
+                        </button>
+                        <div class="page-numbers" id="pageNumbers"></div>
+                        <button class="page-btn" id="nextPage">
+                            Next <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <p>Processing your data...</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="script.js"></script>
+    <script src="analytics.js"></script>
+</body>
+</html>
+
