@@ -1008,6 +1008,8 @@ canvas {
     display: flex;
     gap: 0.5rem;
     margin-top: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .preset-select {
@@ -1236,11 +1238,11 @@ canvas {
 
 .country-grid-comprehensive {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 6px;
     margin-top: 10px;
     max-height: 300px;
-    overflow-y: auto;
+    overflow-x: hidden;
     padding: 10px;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
@@ -1249,7 +1251,7 @@ canvas {
 
 .tld-grid-comprehensive {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 6px;
     margin-top: 10px;
     max-height: 300px;
